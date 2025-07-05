@@ -1,0 +1,640 @@
+@import url('./colors.css');
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-light);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+    border-right: 1px solid var(--primary);
+}
+
+.sidebar h2 {
+    color: var(--dark);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar button {
+    padding: 0.8rem;
+    background-color: var(--primary);
+    color: var(--dark);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.sidebar button:hover {
+    background-color: var(--dark);
+    color: var(--primary-light);
+    transform: translateX(5px) scale(1.04);
+}
+
+.sidebar button i {
+    font-size: 1.1rem;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 2.5rem 2rem;
+    margin-left: 250px;
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+}
+
+/* Search Bar Styles */
+.search-container {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    background-color: var(--primary-light);
+    color: var(--dark);
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--primary-light);
+    padding: 1.5rem;
+    border-radius: 14px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+}
+
+.card h2 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--primary-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+th, td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--primary);
+    text-align: left;
+    color: var(--dark);
+    font-size: 1rem;
+}
+
+th {
+    background-color: var(--primary-light);
+    color: var(--dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+tr:hover {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+/* Status Badge Styles */
+.status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-block;
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.status-badge.pending {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+.status-badge.approved {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+.status-badge.rejected {
+    background-color: var(--dark);
+    color: var(--primary-light);
+}
+
+.status-badge.completed {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+/* Button Styling */
+.btn-primary, .book-btn {
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, transform 0.18s;
+    outline: none;
+    margin: 0 0.1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    min-width: 90px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .book-btn:hover, .book-btn:focus {
+    background: var(--dark);
+    color: var(--primary-light);
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* Confirm Booking Button Styling */
+#confirmBooking {
+    background: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.38rem 1.1rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.18s;
+    outline: none;
+    margin: 0 0.1rem;
+    box-shadow: none;
+    min-width: 90px;
+}
+#confirmBooking:hover, #confirmBooking:focus {
+    background: #047857;
+    transform: translateY(-1px) scale(1.03);
+}
+
+/* Cancel Button Styling (Message Modal) */
+#cancelMessageBtn {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.38rem 1.1rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.18s;
+    outline: none;
+    margin: 0 0.1rem;
+    box-shadow: none;
+    min-width: 90px;
+}
+#cancelMessageBtn:hover, #cancelMessageBtn:focus {
+    background: #991b1b;
+    transform: translateY(-1px) scale(1.03);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background-color: #1e293b;
+    color: #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1e293b;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 500px;
+    max-width: 90%;
+    z-index: 1001;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+    color: #e2e8f0;
+}
+
+.modal-content h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #7dd3fc;
+}
+
+/* Profile Section at Top Right */
+.profile-section {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #1e293b;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    z-index: 1100;
+    transition: background 0.2s;
+}
+.profile-section:hover {
+    background: #334155;
+}
+#studentProfileIcon {
+    color: #60a5fa;
+    width: 32px;
+    height: 32px;
+}
+#studentProfileName {
+    color: #e2e8f0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Profile Dialog Styles */
+.profile-dialog-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1200;
+}
+.profile-dialog-overlay.active {
+    display: block;
+}
+.profile-dialog {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    background: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    min-width: 320px;
+    z-index: 1300;
+    color: #e2e8f0;
+}
+.profile-dialog.active {
+    display: block;
+}
+.profile-dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.profile-dialog-header h3 {
+    margin: 0;
+    color: #7dd3fc;
+    font-size: 1.3rem;
+}
+.profile-dialog-close {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.profile-dialog-close:hover {
+    color: #e2e8f0;
+}
+.profile-info-item {
+    margin-bottom: 1.1rem;
+}
+.profile-info-item label {
+    color: #60a5fa;
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+}
+.profile-info-item span {
+    color: #e2e8f0;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1002;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification.success {
+    background-color: #10B981;
+}
+
+.notification.error {
+    background-color: #EF4444;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+--primary-gradient: linear-gradient(to right, var(--background), var(--dark));
+--background-dark: var(--background);
+--background-light: var(--primary-light);
+--text-color: var(--primary-light);
+--text-light: var(--primary);
+--border-color: var(--dark);
+
+background: linear-gradient(to right, var(--background), var(--dark));
+color: var(--primary-light);
+
+fill: var(--primary);
+
+background: var(--background);
+
+background: var(--primary);
+
+color: var(--primary);
+
+color: var(--primary-light);
+
+color: var(--primary);
+
+background: var(--background);
+
+color: var(--primary-light);
+
+color: var(--primary);
+
+background-color: var(--background);
+
+color: var(--primary);
+
+background-color: var(--primary);
+
+border-bottom: 1px solid var(--dark);
+
+background-color: var(--primary-light);
+color: var(--dark);
+border: 1px solid var(--primary-light);
+
+background-color: var(--primary);
+color: var(--primary-light);
+border: 1px solid var(--primary);
+
+background-color: var(--primary);
+color: var(--primary-light);
+border: 1px solid var(--dark);
+
+background: var(--background);
+
+color: var(--primary-light);
+
+color: var(--primary);
+
+background-color: var(--dark);
+color: var(--primary);
+
+background-color: var(--primary);
+color: var(--primary-light);
+
+background: var(--primary);
+color: var(--primary-light);
+
+border: 1px solid var(--dark);
+
+border-color: var(--primary);
+
+color: var(--primary);
+
+background-color: var(--primary);
+color: var(--primary-light);
+
+background: var(--primary);
+color: var(--primary-light);
+
+background: #B6B09F;
+color: #000000;
+
+background: #EAE4D5;
+
+background: #000000;
+color: #F2F2F2;
+
+background: #B6B09F;
+color: #F2F2F2;
+
+color: #B6B09F;
+
+border: 1px solid #B6B09F;
+background-color: #F2F2F2;
+color: #000000;
+
+border-color: #EAE4D5;
+
+background-color: #F2F2F2;
+color: #000000;
+
+color: #B6B09F;
+
+color: #EAE4D5;
+
+background: #F2F2F2;
+
+background: #B6B09F;
+
+color: #EAE4D5;
+
+color: #F2F2F2;
+
+color: #B6B09F;
+
+color: #F2F2F2;
+
+background-color: #B6B09F;
+
+background-color: #000000;
+
+background: #FF9999;
+color: #FFC8C8;
+
+background: #444F5A;
+
+background: #3E4149;
+color: #FFC8C8;
+
+background: #FF9999;
+color: #FFC8C8;
+
+color: #444F5A;
+
+border: 1px solid #444F5A;
+background-color: #FFC8C8;
+color: #3E4149;
+
+border-color: #FF9999;
+
+background-color: #FFC8C8;
+color: #3E4149;
+
+color: #444F5A;
+
+color: #FF9999;
+
+background: #FFC8C8;
+
+background: #FF9999;
+
+color: #FF9999;
+
+color: #FFC8C8;
+
+color: #444F5A;
+
+color: #FFC8C8;
+
+background-color: #444F5A;
+
+background-color: #3E4149; 
